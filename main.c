@@ -1,4 +1,5 @@
 #include "ezsdl.h"
+#include <SDL2/SDL.h>
 
 int main(int argc, char* argv[])
 {
@@ -7,11 +8,15 @@ int main(int argc, char* argv[])
         return 1;
     }
 
-    color(60, 0, 60, 255);
-    line(5,25, 10,30);
-    draw();
+	for(int i = 0; i < 100; i++)
+	{
+		color(0, 0, 0, 255);
+		clear();
 
-    delay(2000);
-    destroy();
+		color(255, 0, 0, 255);
+		line(i, 0, i+30, 30);
+		draw();
+		delay(50);
+	}
 }
 

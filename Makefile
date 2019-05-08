@@ -15,6 +15,14 @@ lib:
 	$(AR) $(ARFLAGS) libezsdl.a ezsdl.o
 
 
+install: lib
+	cp ezsdl.h /usr/local/inlude/
+	cp libezsdl.a /usr/lib/
+    
+uninstall: x
+	rm -f /usr/local/include/ezsdl.h
+	rm -f /usr/lib/libezsdl.a
+
 .PHONY:
 clean:
 	rm -f *.o *.a main

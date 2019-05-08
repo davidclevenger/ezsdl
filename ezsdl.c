@@ -30,7 +30,7 @@ create(int width, int height)
 		return 1;
 	}
 
-    if( SDL_CreateWindowAndRenderer(width, height, 0, &Context.window, &Context.renderer) != 0 )
+    if( SDL_CreateWindowAndRenderer(width, height, SDL_WINDOW_RESIZABLE , &Context.window, &Context.renderer) != 0 )
         return 1;
 
     Context.init = 1;
@@ -82,6 +82,44 @@ void
 clear()
 {
     SDL_RenderClear(Context.renderer);
+}
+
+Event
+event()
+{
+    SDL_Event e;
+    SDL_PollEvent(&e);
+        
+    if( e.type == SDL_QUIT )
+    {
+        return QUIT;
+    }
+
+    return EVENT_NONE;
+}
+
+Key
+key()
+{
+    SDL_Event e;
+    SDL_PollEvent(&e);
+        
+    if( e.type == SDL_KEYDOWN )
+    {
+        switch( e.key.keysym.sym )
+        {
+            case SDLK_LEFT:
+                return LEFT;
+            case SDLK_RIGHT:
+                return RIGHT;
+            case SDLK_UP:
+                return UP;
+            case SDLK_DOWN:
+                return DOWN;
+        }
+    }
+
+    return KEY_NONE;
 }
 
 void

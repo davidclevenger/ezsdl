@@ -126,29 +126,11 @@ void
 process_x(int* x)
 {
 	*x = *x + (Context.width / 2);
-
-	if( *x < 0 )
-	{
-		*x = 0;
-	}
-	else if( *x > Context.width )
-	{
-		*x = Context.width;
-	}
 }
 
 void
 process_y(int* y)
 {
 	*y = (Context.height / 2) - (*y); 
-
-	if( *y < 0 )
-	{
-		*y = 0;
-	}
-	else if( *y > Context.height )
-	{
-		*y = Context.height;
-	}
 }
 
